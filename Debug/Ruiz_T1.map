@@ -2971,13 +2971,13 @@ LOAD linker stubs
  .debug_macro   0x00000401       0x10 ./drivers/fsl_uart.o
  .debug_macro   0x00000411       0x98 ./device/system_MK64F12.o
 
-.debug_line     0x00000000     0x3820
+.debug_line     0x00000000     0x3822
  .debug_line    0x00000000      0x90e ./startup/startup_mk64f12.o
- .debug_line    0x0000090e      0x35a ./source/main.o
- .debug_line    0x00000c68       0x59 ./source/semihost_hardfault.o
- .debug_line    0x00000cc1     0x13ce ./drivers/fsl_i2c.o
- .debug_line    0x0000208f     0x13be ./drivers/fsl_uart.o
- .debug_line    0x0000344d      0x3d3 ./device/system_MK64F12.o
+ .debug_line    0x0000090e      0x35c ./source/main.o
+ .debug_line    0x00000c6a       0x59 ./source/semihost_hardfault.o
+ .debug_line    0x00000cc3     0x13ce ./drivers/fsl_i2c.o
+ .debug_line    0x00002091     0x13be ./drivers/fsl_uart.o
+ .debug_line    0x0000344f      0x3d3 ./device/system_MK64F12.o
 
 .debug_str      0x00000000    0x7d44a
  .debug_str     0x00000000     0x36b6 ./startup/startup_mk64f12.o
