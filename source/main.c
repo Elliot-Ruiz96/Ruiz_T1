@@ -25,28 +25,20 @@ int main(void) {
     	GPIOB->PDOR = 0;
     	GPIOB->PDOR = 0x00400000;
     	printf("BLUE LED ON\n");
-    	delay(DELAY);
-    	GPIOB->PDOR = 0x00600000;
-     	printf("BLUE LED OFF\n");
 
     	delay(DELAY);
 
     	GPIOB->PDOR = 0;
     	GPIOB->PDOR = 0x00200000;
 		printf("RED LED ON\n");
-		delay(DELAY);
-		GPIOB->PDOR = 0x00600000;
-		printf("RED LED OFF\n");
 
 		delay(DELAY);
 
     	GPIOE->PDOR = 0;
     	printf("GREEN LED ON\n");
-    	delay(DELAY);
-    	GPIOE->PDOR= 0x04000000;
-    	printf("GREEN LED OFF\n");
 
     	delay(DELAY);
+
 
     }
     return 0 ;
