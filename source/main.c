@@ -15,25 +15,27 @@ int main(void) {
 	PORTE->PCR[26] = 0x00000100;
 	GPIOB->PDOR = 0x00200000;
 	GPIOB->PDDR = 0x00200000;
-	GPIOB->PDOR = 0x00400000;
-	GPIOB->PDDR = 0x00400000;
+	GPIOB->PDOR |= 0x00400000;
+	GPIOB->PDDR |= 0x00400000;
 	GPIOE->PDOR = 0x04000000;
 	GPIOE->PDDR = 0x04000000;
 
     while(1) {
 
     	GPIOB->PDOR = 0;
+    	GPIOB->PDOR = 0x00400000;
     	printf("BLUE LED ON\n");
     	delay(DELAY);
-    	GPIOB->PDOR = 0x00200000;
-    	printf("BLUE LED OFF\n");
+    	GPIOB->PDOR = 0x00600000;
+     	printf("BLUE LED OFF\n");
 
     	delay(DELAY);
 
     	GPIOB->PDOR = 0;
+    	GPIOB->PDOR = 0x00200000;
 		printf("RED LED ON\n");
 		delay(DELAY);
-		GPIOB->PDOR = 0x00400000;
+		GPIOB->PDOR = 0x00600000;
 		printf("RED LED OFF\n");
 
 		delay(DELAY);
