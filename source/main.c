@@ -1,50 +1,61 @@
-
 #include <stdio.h>
-#include "fsl_clock.h"
-#include "fsl_gpio.h"
-#include "fsl_port.h"
-#include "fsl_common.h"
+#include <stdint.h>
+#include "MK64F12.h"
 
-gpio_pin_config_t led_config = {
-        kGPIO_DigitalOutput,
-        1,
-    };
+#define DELAY 1000000
 
-#define PIN22      	22u
-#define	PIN21		21u
-#define PIN26		26u
-#define CORE_FREQ	21000000u
-#define DELAY		1000000u
+void delay(uint32_t delay);
 
 int main(void) {
 
-	 CLOCK_EnableClock(kCLOCK_PortB);
-	 CLOCK_EnableClock(kCLOCK_PortE);
-
-	 PORT_SetPinMux(PORTB, PIN22, kPORT_MuxAsGpio); // Red LED
-	 PORT_SetPinMux(PORTB, PIN21, kPORT_MuxAsGpio); // Blue LED
-	 PORT_SetPinMux(PORTE, PIN26, kPORT_MuxAsGpio); // Green LED
-
-	 GPIO_PinInit(GPIOB, PIN22, &led_config);
-	 GPIO_PinInit(GPIOB, PIN21, &led_config);
-	 GPIO_PinInit(GPIOE, PIN26, &led_config);
-
+ 	SIM->SCGC5 = 0x400;
+	SIM->SCGC5 |= 0x2000;
+	PORTB->PCR[21] = 0x00000100;
+	PORTB->PCR[22] = 0x00000100;
+	PORTE->PCR[26] = 0x00000100;
+	GPIOB->PDOR = 0x00200000;
+	GPIOB->PDDR = 0x00200000;
+	GPIOB->PDOR = 0x00400000;
+	GPIOB->PDDR = 0x00400000;
+	GPIOE->PDOR = 0x04000000;
+	GPIOE->PDDR = 0x04000000;
 
     while(1) {
 
-    	GPIO_PortClear(GPIOB, 1u << PIN21);
-    	SDK_DelayAtLeastUs(DELAY, CORE_FREQ);
-    	GPIO_PortSet(GPIOB, 1u << PIN21);
-    	SDK_DelayAtLeastUs(DELAY, CORE_FREQ);
-     	GPIO_PortClear(GPIOB, 1u << PIN22);
-     	SDK_DelayAtLeastUs(DELAY, CORE_FREQ);
-     	GPIO_PortSet(GPIOB, 1u << PIN22);
-     	SDK_DelayAtLeastUs(DELAY, CORE_FREQ);
-    	GPIO_PortClear(GPIOE, 1u << PIN26);
-    	SDK_DelayAtLeastUs(DELAY, CORE_FREQ);
-    	GPIO_PortSet(GPIOE, 1u << PIN26);
-    	SDK_DelayAtLeastUs(DELAY, CORE_FREQ);
+    	GPIOB->PDOR = 0;
+    	printf("BLUE LED ON\n");
+    	delay(DELAY);
+    	GPIOB->PDOR = 0x00200000;
+    	printf("BLUE LED OFF\n");
+
+    	delay(DELAY);
+
+    	GPIOB->PDOR = 0;
+		printf("RED LED ON\n");
+		delay(DELAY);
+		GPIOB->PDOR = 0x00400000;
+		printf("RED LED OFF\n");
+
+		delay(DELAY);
+
+    	GPIOE->PDOR = 0;
+    	printf("GREEN LED ON\n");
+    	delay(DELAY);
+    	GPIOE->PDOR= 0x04000000;
+    	printf("GREEN LED OFF\n");
+
+    	delay(DELAY);
 
     }
     return 0 ;
+}
+
+void delay (uint32_t delay){
+
+	volatile uint32_t i;
+	for (i = 0; i < DELAY; ++i)
+	{
+
+	}
+
 }
