@@ -15,22 +15,33 @@ int main(void) {
 	PORTE->PCR[26] = 0x00000100;
 	GPIOB->PDOR = 0x00200000;
 	GPIOB->PDDR = 0x00200000;
+<<<<<<< HEAD
 	GPIOB->PDOR = 0x00400000;
 	GPIOB->PDDR = 0x00400000;
+=======
+	GPIOB->PDOR |= 0x00400000;
+	GPIOB->PDDR |= 0x00400000;
+>>>>>>> cbd561f3e68930757388aac8eafce7a4b3dd109c
 	GPIOE->PDOR = 0x04000000;
 	GPIOE->PDDR = 0x04000000;
 
     while(1) {
 
     	GPIOB->PDOR = 0;
+<<<<<<< HEAD
     	printf("BLUE LED ON\n");
     	delay(DELAY);
     	GPIOB->PDOR = 0x00200000;
     	printf("BLUE LED OFF\n");
+=======
+    	GPIOB->PDOR = 0x00400000;
+    	printf("BLUE LED ON\n");
+>>>>>>> cbd561f3e68930757388aac8eafce7a4b3dd109c
 
     	delay(DELAY);
 
     	GPIOB->PDOR = 0;
+<<<<<<< HEAD
 		printf("RED LED ON\n");
 		delay(DELAY);
 		GPIOB->PDOR = 0x00400000;
@@ -45,6 +56,18 @@ int main(void) {
     	printf("GREEN LED OFF\n");
 
     	delay(DELAY);
+=======
+    	GPIOB->PDOR = 0x00200000;
+		printf("RED LED ON\n");
+
+		delay(DELAY);
+
+    	GPIOE->PDOR = 0;
+    	printf("GREEN LED ON\n");
+
+    	delay(DELAY);
+
+>>>>>>> cbd561f3e68930757388aac8eafce7a4b3dd109c
 
     }
     return 0 ;
