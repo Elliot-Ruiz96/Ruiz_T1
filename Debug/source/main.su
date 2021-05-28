@@ -1,2 +1,6 @@
 main.c:9:5:main	8	static
+<<<<<<< HEAD
 main.c:53:6:delay	24	static
+=======
+main.c:55:6:delay	24	static
+>>>>>>> cbd561f3e68930757388aac8eafce7a4b3dd109c
